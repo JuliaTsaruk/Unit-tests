@@ -7,30 +7,30 @@ localVue.use(Vuex);
 
 const mutations = {
   doneAll: jest.fn(),
+  clearAll: jest.fn()
 };
 const store = new Vuex.Store({ mutations });
 
 describe("Button component", () => {
   test("is a vue instance", () => {
     const wrapper = mount(Button, { localVue });
-    expect(wrapper.isVueInstance()).toBeTruthy();
+    expect(wrapper.vm).toBeTruthy();
     expect(wrapper.is(Button)).toBeTruthy();
-    expect(wrapper.vm.title).toEqual("Добавить");
   });
 
-  test("call mutation with click on the button", async () => {
-    const wrapper = mount(Button, { store, localVue });
-    await wrapper.findAll("button").trigger("click");
-    expect(mutations.doneAll).toHaveBeenCalled();
+  test("calls clearAll mutation with click on the clearAll button", async () => {
+    const title =  "Удалить всё";
+    const wrapper = mount(Button, { store, localVue, propsData: { title }});
+    await wrapper.find("button").trigger("click");
+    expect (wrapper.vm.title).toEqual("Удалить всё");
+    expect(mutations.clearAll).toHaveBeenCalled();
   });
 
-  //   test("calls function when button is clicked", () => {
-  //     const wrapper = mount(Button, { localVue, propsData: {}});
-  //     const buttonFunction = jest.fn();
-  //     wrapper.setMethods({
-  //         buttonFunction: buttonFunction
-  //     });
-  //     wrapper.findAll("button").trigger("click");
-  //     expect(buttonFunction).toHaveBeenCalled();
-  //   });
+  test("calls doneAll mutation with click on the doneAll button", async () => {
+    const title =  "Выполнить всё";
+    const wrapper = mount(Button, { store, localVue, propsData: { title }});
+    await wrapper.find("button").trigger("click");
+    expect (wrapper.vm.title).toEqual("Выполнить всё");
+    expect(mutations.clearAll).toHaveBeenCalled();
+  });
 });

@@ -1,7 +1,7 @@
 <template>
   <label class="checkboxLabel" :class="{ done: isChecked }">
     <input type="checkbox" :checked="isChecked" @click="change" />
-    <span>{{ title }}</span>
+    <span class="checkboxText">{{ title }}</span>
     <button @click="remove"></button>
   </label>
 </template>
