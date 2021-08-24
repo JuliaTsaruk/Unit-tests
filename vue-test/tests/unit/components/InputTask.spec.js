@@ -1,6 +1,8 @@
 import Vuex from "vuex";
+import { v4 as uuidv4 } from "uuid";
 import { mount, createLocalVue } from "@vue/test-utils";
 import InputTask from "@/components/molecules/InputTask.vue";
+import index from "@/store/index.js";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -20,7 +22,15 @@ describe("InputTask component", () => {
     const wrapper = mount(InputTask, {store, localVue});
     await wrapper.find("form").trigger("submit.prevent");
     await wrapper.find("button").trigger("click");
-
     expect(mutations.addTask).toHaveBeenCalled();
   })
+
+  test("mutation 'addTask' add new task", () => {
+    const task =  "newTask";
+    const state = {
+      todos: [],
+    };
+    index.commit("addTask", task);
+    expect(index.state.todos).toEqual([{id: uuidv4(), isChecked:false, title:task}])
+  });
 });

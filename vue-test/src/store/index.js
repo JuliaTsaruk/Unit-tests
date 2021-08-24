@@ -6,7 +6,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    
     todos: [],
     radioButtons: [
       { id: uuidv4(), buttonTitle: "Все", isPicked: true },
@@ -54,6 +53,7 @@ export default new Vuex.Store({
     },
     clearAll(state) {
       state.todos = [];
+      console.log(state.todos.length);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     doneAll(state) {
