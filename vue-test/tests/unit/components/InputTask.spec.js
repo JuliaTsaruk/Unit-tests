@@ -25,12 +25,4 @@ describe("InputTask component", () => {
     expect(mutations.addTask).toHaveBeenCalled();
   })
 
-  test("mutation 'addTask' add new task", () => {
-    const task =  "newTask";
-    const state = {
-      todos: [],
-    };
-    index.commit("addTask", task);
-    expect(index.state.todos).toEqual([{id: uuidv4(), isChecked:false, title:task}])
-  });
 });

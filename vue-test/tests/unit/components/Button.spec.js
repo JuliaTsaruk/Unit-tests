@@ -21,7 +21,7 @@ describe("Button component", () => {
     expect(wrapper.is(Button)).toBeTruthy();
   });
 
-  test("calls clearAll mutation with click on the clearAll button", async () => {
+  test("calls mutation with click on the clearAll button", async () => {
     const title =  "Удалить всё";
     const wrapper = mount(Button, { store, localVue, propsData: { title }});
     await wrapper.find("button").trigger("click");
@@ -29,23 +29,11 @@ describe("Button component", () => {
     expect(mutations.clearAll).toHaveBeenCalled();
   });
 
-  test("calls doneAll mutation with click on the doneAll button", async () => {
+  test("calls mutation with click on the doneAll button", async () => {
     const title =  "Выполнить всё";
     const wrapper = mount(Button, { store, localVue, propsData: { title }});
     await wrapper.find("button").trigger("click");
     expect (wrapper.vm.title).toEqual("Выполнить всё");
     expect(mutations.clearAll).toHaveBeenCalled();
   });
-
-  test("mutation 'ClearAll' delete all tasks", () => {
-    const state = {
-      todos: [
-        { id: 1, title: "Buy bread", isChecked: false },
-        { id: 2, title: "Read the book", isChecked: false },
-        { id: 3, title: "Cook soup", isChecked: false }
-      ]
-    };
-    index.clearAll(state);
-    expect(state.todos.length).toBe(0);
-  })
 });

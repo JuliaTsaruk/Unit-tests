@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+//export default new Vuex.Store({
+export default({
   state: {
     todos: [],
     radioButtons: [
@@ -53,7 +54,6 @@ export default new Vuex.Store({
     },
     clearAll(state) {
       state.todos = [];
-      console.log(state.todos.length);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     doneAll(state) {
@@ -79,7 +79,7 @@ export default new Vuex.Store({
     },
     changeFilterStatus(state, id) {
       state.radioButtons = state.radioButtons.map((btn) =>
-        btn.id === id ? { ...btn, isPicked: btn.isPicked } : btn
+        btn.id === id ? { ...btn, isPicked: true}:{ ...btn, isPicked: false}
       );
     },
     getFromStorage(state) {

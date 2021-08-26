@@ -12,7 +12,7 @@ describe("RadioButtons component", () => {
     expect(wrapper.is(RadioButtons)).toBeTruthy();
   });
 
-  test("changes status with click", async () => {
+  test("radio button changes with click", async () => {
     const wrapper = mount(RadioButtons, { localVue });
     const radio = wrapper.find("input[type = 'radio']");
     await radio.trigger("click");
