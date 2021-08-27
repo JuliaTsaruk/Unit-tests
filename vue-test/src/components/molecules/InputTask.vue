@@ -3,7 +3,7 @@
     <h2>Какие планы на сегодня?</h2>
     <form @submit.prevent="submit">
       <input type="text" v-model="newInput" newTask-input />
-      <Button />
+      <Button id="addTask" />
     </form>
   </div>
 </template>

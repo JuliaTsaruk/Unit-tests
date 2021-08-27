@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 Vue.use(Vuex);
 
-//export default new Vuex.Store({
-export default({
+export default new Vuex.Store({
+//export default({
   state: {
     todos: [],
     radioButtons: [
