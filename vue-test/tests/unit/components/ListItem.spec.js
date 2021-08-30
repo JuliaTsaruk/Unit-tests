@@ -3,8 +3,9 @@ import { mount, createLocalVue } from "@vue/test-utils";
 import ListItem from "@/components/atoms/ListItem.vue";
 
 const localVue = createLocalVue();
-const title = "Buy bread";
 localVue.use(Vuex);
+
+const title = "Buy bread";
 const mutations = {
   deleteTask: jest.fn(),
 };

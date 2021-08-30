@@ -4,6 +4,7 @@ import InputTask from "@/components/molecules/InputTask.vue";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+
 const mutations = {
   addTask: jest.fn(),
 };

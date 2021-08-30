@@ -4,6 +4,7 @@ import Button from "@/components/atoms/Button.vue";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+
 const mutations = {
   doneAll: jest.fn(),
   clearAll: jest.fn(),
