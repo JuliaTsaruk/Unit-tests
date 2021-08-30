@@ -1,8 +1,8 @@
 <template>
   <label class="checkboxLabel" :class="{ done: isChecked }">
-    <input type="checkbox" :checked="isChecked" @click="change" />
+    <input id="checkbox" type="checkbox" :checked="isChecked" @click="change" />
     <span class="checkboxText">{{ title }}</span>
-    <button @click="remove"></button>
+    <button id="removeTask" @click="remove"></button>
   </label>
 </template>
 

@@ -24,12 +24,12 @@
         Список заданий пуст
       </div>
       <div :class="$style.manageTasks">
-        <Button title="Выполнить всё" />
-        <Button title="Удалить всё" />
+        <Button id="allDone" title="Выполнить всё" />
+        <Button id="allDelete" title="Удалить всё" />
       </div>
     </div>
     <p :class="$style.taskLeft">
-      Молодец! Ты выполнил уже: <span>{{ showResult }}</span>
+      Молодец! Ты выполнил уже: <span id="result">{{ showResult }}</span>
     </p>
   </div>
 </template>
@@ -44,7 +44,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "todoList",
   computed: {
-    ...mapGetters(["allTasks", "radioBtns", "showTasks", "showResult"]),
+    ...mapGetters(["radioBtns", "showTasks", "showResult"]),
   },
   mounted() {
     this.$store.dispatch("getFromStorage");
