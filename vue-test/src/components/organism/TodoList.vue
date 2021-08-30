@@ -44,7 +44,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "todoList",
   computed: {
-    ...mapGetters(["allTasks", "radioBtns", "showTasks", "showResult"]),
+    ...mapGetters(["radioBtns", "showTasks", "showResult"]),
   },
   mounted() {
     this.$store.dispatch("getFromStorage");

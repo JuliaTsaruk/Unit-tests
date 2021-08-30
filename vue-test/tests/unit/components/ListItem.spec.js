@@ -5,7 +5,6 @@ import ListItem from "@/components/atoms/ListItem.vue";
 const localVue = createLocalVue();
 const title = "Buy bread";
 localVue.use(Vuex);
-
 const mutations = {
   deleteTask: jest.fn(),
 };
@@ -18,18 +17,15 @@ describe("ListItem component", () => {
     expect(wrapper.is(ListItem)).toBeTruthy();
     expect(wrapper.vm.title).toEqual(title);
   });
-
   test("renders the task name", () => {
     const wrapper = mount(ListItem, { localVue, propsData: { title } });
     expect(wrapper.html()).toContain(title);
   });
-
   test("calls deleteTask mutation when removeButton is clicked", () => {
-    const wrapper = mount(ListItem, {store, localVue, propsData: { title } });
+    const wrapper = mount(ListItem, { store, localVue, propsData: { title } });
     wrapper.find("button").trigger("click");
     expect(mutations.deleteTask).toHaveBeenCalled();
   });
-
   test("changes status with click", async () => {
     const wrapper = mount(ListItem, { localVue, propsData: { title } });
     const checkbox = wrapper.find("input[type = 'checkbox']");
