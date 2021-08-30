@@ -1,4 +1,4 @@
-# Unit-tests
+# vue-test
 
 ## Project setup
 ```
@@ -17,12 +17,17 @@ npm run build
 
 ### Run your unit tests
 ```
-npm run test
+npm run test:unit
 ```
 
 ### Run your end-to-end tests
 ```
-npm run test2
+npm run test:e2e
+```
+
+### Lints and fixes files
+```
+npm run lint
 ```
 
 ### Customize configuration

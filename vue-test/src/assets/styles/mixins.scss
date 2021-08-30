@@ -1,0 +1,7 @@
+@mixin button {
+  border: none;
+  background-color: $main-color;
+  color: $font-color;
+  font-weight: bold;
+  border-radius: 0.1rem;
+}
