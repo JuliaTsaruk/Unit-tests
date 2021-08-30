@@ -8,6 +8,7 @@ localVue.use(Vuex);
 const title = "Buy bread";
 const mutations = {
   deleteTask: jest.fn(),
+  changeTaskStatus: jest.fn()
 };
 const store = new Vuex.Store({ mutations });
 
@@ -28,10 +29,10 @@ describe("ListItem component", () => {
     expect(mutations.deleteTask).toHaveBeenCalled();
   });
   test("changes status with click", async () => {
-    const wrapper = mount(ListItem, { localVue, propsData: { title } });
+    const wrapper = mount(ListItem, {store, localVue, propsData: { title } });
     const checkbox = wrapper.find("input[type = 'checkbox']");
     await checkbox.trigger("click");
     await checkbox.trigger("change");
-    expect(checkbox.element.checked).toBeTruthy();
+    expect(mutations.changeTaskStatus).toHaveBeenCalled();
   });
 });

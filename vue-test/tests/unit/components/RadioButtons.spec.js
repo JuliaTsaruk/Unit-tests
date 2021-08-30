@@ -7,6 +7,7 @@ localVue.use(Vuex);
 
 const mutations = {
   changeFilter: jest.fn(),
+  changeFilterStatus: jest.fn(),
 };
 const store = new Vuex.Store({ mutations });
 
@@ -22,5 +23,12 @@ describe("RadioButtons component", () => {
     await radio.trigger("click");
     await radio.trigger("change");
     expect(mutations.changeFilter).toHaveBeenCalled();
+  });
+  test("radio button changes with click", async () => {
+    const wrapper = mount(RadioButtons, {store, localVue });
+    const radio = wrapper.find("input[type = 'radio']");
+    await radio.trigger("click");
+    await radio.trigger("change");
+    expect(mutations.changeFilterStatus).toHaveBeenCalled();
   });
 });
